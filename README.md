@@ -71,28 +71,28 @@ DATA PREPROCESSING : Now that we have illuminated the path through EDA, we can m
 ONE HOT ENCODING: One-hot encoding is a technique used to convert categorical variables into a binary format so that they can be used in machine learning models. To perform one-hot encoding on the "States" and "Crops" columns in this dataset.
 import pandas as pd
 
-#Perform one-hot encoding for the 'States' and 'Crops' columns
+Perform one-hot encoding for the 'States' and 'Crops' columns
 data_encoded = pd.get_dummies(df, columns=['States', 'Crops'])
 
-#Display the first few rows of the encoded dataset
+Display the first few rows of the encoded dataset
 print(data_encoded.head())
 
-#Save the encoded dataset to a new CSV file
+Save the encoded dataset to a new CSV file
 data_encoded.to_csv('encoded_crop_yields.csv', index=False)
 
 MIN MAX SCALER: MinMaxScaler from the scikit-learn library. Min-Max scaling scales the features to a specified range, typically between 0 and 1. 
 from sklearn.preprocessing import MinMaxScaler
 
-#Select the columns you want to scale (exclude the categorical columns)
+Select the columns you want to scale (exclude the categorical columns)
 columns_to_scale = [ 'Yield (Kg./Hectare) - 2017-18', 'Yield (Kg./Hectare) - 2018-19', 'Yield (Kg./Hectare) - 2019-20', 'Yield (Kg./Hectare) - 2020-21', 'Yield (Kg./Hectare) - 2021-22' ]
 
-#Initialize the MinMaxScaler
+Initialize the MinMaxScaler
 scaler = MinMaxScaler()
 
-#Fit and transform the selected columns
+Fit and transform the selected columns
 df[columns_to_scale] = scaler.fit_transform(df[columns_to_scale])
 
-#Display the first few rows of the scaled dataset
+Display the first few rows of the scaled dataset
 print(df.head())
 
 SUMMARY STATISTICS: Here we calculate the summary of the statistics for Yield (Kg./Hectare) - 2017-18. We calculate Mean,Mean,Standard Deviation, Minimum and Maximum
